@@ -1,29 +1,18 @@
 package cn.edu.hcnu.bean;
 
-import cn.edu.hcnu.bean.Customer;
+import java.util.Set;
 
 public class Order {
-    private  String id;
-    private  float jpjg;//机票价格
-    private  float airPortTax;//机场税
-    private  float ryf;//燃油费
-    private  float hkzhx;//航空综合险
-    private  float jptgx;//机票退该险
-    private  float yhp;//优惠券
-    private  float hszj;//含税总价
-    private Customer customers[];
-
-    public Order(String id, float jpjg, float airPortTax, float ryf, float hkzhx, float jptgx, float yhp, float hszj, Customer[] customers) {
-        this.id = id;
-        this.jpjg = jpjg;
-        this.airPortTax = airPortTax;
-        this.ryf = ryf;
-        this.hkzhx = hkzhx;
-        this.jptgx = jptgx;
-        this.yhp = yhp;
-        this.hszj = hszj;
-        this.customers = customers;
-    }
+    private String id;
+    private float jpjg;//机票价格
+    private float airPortTax;//机场税
+    private float ryf;//燃油费
+    private float hkzhx;//航空综合险
+    private float jptgx;//机票退该险
+    private float yhp;//优惠券
+    private float hszj;//含税总价
+    private Set<Customer> customerSet;
+    private Flight flight;
 
     public String getId() {
         return id;
@@ -89,11 +78,19 @@ public class Order {
         this.hszj = hszj;
     }
 
-    public Customer[] getCustomers() {
-        return customers;
+    public Set<Customer> getCustomerSet() {
+        return customerSet;
     }
 
-    public void setCustomers(Customer[] customers) {
-        this.customers = customers;
+    public void setCustomerSet(Set<Customer> customerSet) {
+        this.customerSet = customerSet;
+    }
+
+    public Flight getFlight() {
+        return flight;
+    }
+
+    public void setFlight(Flight flight) {
+        this.flight = flight;
     }
 }

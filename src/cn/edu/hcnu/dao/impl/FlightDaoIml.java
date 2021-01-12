@@ -10,7 +10,7 @@ public class FlightDaoIml implements IFlightDao {
 
     @Override
     public void inserFlight(Flight flight) {
-
+        System.out.println("Dao层："+flight);
     }
 
     @Override

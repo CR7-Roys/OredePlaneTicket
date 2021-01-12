@@ -1,3 +1,5 @@
+package cn.edu.hcnu.bean;
+
 public class Flight {
     private String id;
     private String planeType;//乘客类型（成人、儿童）

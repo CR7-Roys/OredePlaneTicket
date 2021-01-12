@@ -1,4 +1,7 @@
-import java.lang.reflect.Array;
+package cn.edu.hcnu.bean;
+
+import cn.edu.hcnu.bean.Customer;
+
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,3 +1,7 @@
+package cn.edu.hcnu.bean;
+
+import cn.edu.hcnu.bean.Customer;
+
 public class Order {
     private  String id;
     private  float jpjg;//机票价格
@@ -7,7 +11,7 @@ public class Order {
     private  float jptgx;//机票退该险
     private  float yhp;//优惠券
     private  float hszj;//含税总价
-    private  Customer customers[];
+    private Customer customers[];
 
     public Order(String id, float jpjg, float airPortTax, float ryf, float hkzhx, float jptgx, float yhp, float hszj, Customer[] customers) {
         this.id = id;

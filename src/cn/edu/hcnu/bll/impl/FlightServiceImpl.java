@@ -4,6 +4,7 @@ import cn.edu.hcnu.bll.IFlightService;
 import cn.edu.hcnu.dao.IFlightDao;
 import cn.edu.hcnu.dao.impl.FlightDaoIml;
 
+import java.sql.SQLException;
 import java.util.Set;
 
 public class FlightServiceImpl implements IFlightService {
@@ -15,7 +16,7 @@ public class FlightServiceImpl implements IFlightService {
     }
 
     @Override
-    public void insertFlight(Flight flight) {
+    public void insertFlight(Flight flight) throws SQLException {
         IflightDao.inserFlight(flight);
 //        System.out.println("界面传来的航班信息："+flight);
    }

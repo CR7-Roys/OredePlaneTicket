@@ -18,17 +18,11 @@ public class FlightServiceImpl implements IFlightService {
     @Override
     public void insertFlight(Flight flight) throws SQLException {
         IflightDao.inserFlight(flight);
-//        System.out.println("界面传来的航班信息："+flight);
    }
 
     @Override
-    public void inserFlight(Flight flight) {
-
-    }
-
-    @Override
-    public Set<Flight> getAllFligths() {
-        return null;
+    public Set<Flight> getAllFligths() throws SQLException {
+        return IflightDao.getAllFligths();
     }
 
     @Override

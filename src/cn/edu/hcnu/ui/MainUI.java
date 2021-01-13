@@ -6,6 +6,7 @@ import cn.edu.hcnu.bll.impl.FlightServiceImpl;
 
 import java.sql.SQLException;
 import java.util.Scanner;
+import java.util.Set;
 import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -29,17 +30,18 @@ public class MainUI {
                 System.out.print("请输入机型：");
                 String planeType = sc.next();
                 System.out.print("请输入座位数：");
-                int currentSeatNumber = sc.nextInt();
+                int currentSeatNum = sc.nextInt();
                 System.out.print("请输入起飞机场：");
                 String departureAirPort = sc.next();
                 System.out.print("请输入目的机场：");
                 String destinationAirPort = sc.next();
-                System.out.print("请输入起飞时间：");
+                System.out.print("请输入到达时间：");
                 String departureTime = sc.next();
 
-                Flight flight = new Flight(id, flightId, planeType, currentSeatNumber,
+                Flight flight = new Flight(id, flightId, planeType, currentSeatNum,
                         departureAirPort, destinationAirPort, departureTime);
                 IFlightService iFlightService = new FlightServiceImpl();
+                iFlightService.insertFlight(flight);
                 try {  //异常处理
                     iFlightService.insertFlight(flight);
                 } catch (SQLException e) {
@@ -53,11 +55,12 @@ public class MainUI {
                         // 创建 Pattern 对象
                         Pattern r=Pattern.compile(pattern);
                         // 现在创建 matcher 对象
+                        System.out.println(errorMessage);
                         Matcher m=r.matcher(errorMessage);
                         if (m.find()) {
                             String tableName=m.group(4);
                             String columnName=m.group(5);
-                            System.out.println(errorMessage);
+
                             System.out.println(tableName + "表的" + columnName + "这一列的值过大，请仔细检查");
                         } else {
                             System.out.println("NO MATCH");
@@ -65,6 +68,17 @@ public class MainUI {
                     }
                 }
 
+            }else if (choice==2){
+                IFlightService iFlightService=new FlightServiceImpl();
+                try {
+                    Set<Flight> allFlights = iFlightService.getAllFligths();
+                    //遍历
+                    for (Flight flight:allFlights){
+                        System.out.println(flight);
+                    }
+                }catch (SQLException e){
+                    e.printStackTrace();
+                }
             }
 
         }

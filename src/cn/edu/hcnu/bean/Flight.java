@@ -81,13 +81,13 @@ public class Flight {
 //重写、打印
     @Override
     public String toString() {
-        return "Flight{" +"\n"+
-                " 航班号='" + flightId + '\'' +"\n"+
-                " 飞机类型='" + planeType + '\'' +"\n"+
-                " 座位数=" + currentSeatsNum +"\n"+
-                " 起飞机场='" + departureAirPort + '\'' +"\n"+
-                " 目的机场='" + destinationAirPort + '\'' +"\n"+
-                " 到达时间='" + departureTime + '\'' +"\n"+
+        return "{" +
+                " 航班号='" + flightId + '\'' +
+                " 飞机类型='" + planeType + '\'' +
+                " 座位数=" + currentSeatsNum +'\'' +
+                " 起飞机场='" + departureAirPort + '\'' +
+                " 目的机场='" + destinationAirPort + '\'' +
+                " 到达时间='" + departureTime + '\'' +
                 '}';
     }
 

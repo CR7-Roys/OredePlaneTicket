@@ -5,7 +5,6 @@ import cn.edu.hcnu.dao.IFlightDao;
 
 import java.sql.*;
 import java.util.HashSet;
-import java.util.ResourceBundle;
 import java.util.Set;
 
 public class FlightDaoIml implements IFlightDao {
@@ -17,7 +16,7 @@ public class FlightDaoIml implements IFlightDao {
        String username="opts";
        String password="opts1111";
         Connection conn= DriverManager.getConnection(url,username,password);
-//        System.out.println("当前连接：" + conn);
+//     System.out.println("当前连接：" + conn);
         String sql="INSERT INTO flight VALUES(?,?,?,?,?,?,?)";
         PreparedStatement pstmt=conn.prepareStatement(sql);
         pstmt.setString(1,flight.getId());
@@ -58,6 +57,7 @@ public class FlightDaoIml implements IFlightDao {
 
     @Override
     public Flight getFlightDepartureAirPort(String departureAirPort) {
+
         return null;
     }
 
@@ -67,8 +67,30 @@ public class FlightDaoIml implements IFlightDao {
     }
 
     @Override
-    public Flight getFlightDepartureTime(String departureTime) {
-        return null;
+    public Flight getFlightDepartureTime(String departureTime) throws SQLException {
+        String sql = "SELECT FLIGHT_ID,PLANE_TYPE,TOTAL_SEATS_NUM,DEPARTURE_AIRPORT,DESTINATION_AIRPORT,DEPARTURE_TIME" +
+                " FROM flight " +
+                "where DEPARTURE_TIME=?";
+        String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+        String username = "opts";
+        String password = "opts1111";
+        Connection conn = DriverManager.getConnection(url, username, password);
+        Flight flight=null;
+        PreparedStatement pstmt=conn.prepareStatement(sql);
+        pstmt.setString(1,departureTime);
+        ResultSet zx=pstmt.executeQuery();
+
+        while (zx.next()){
+            String flightId = zx.getString("FLIGHT_ID");
+            String planeType = zx.getString("PLANE_TYPE");
+            int currentSeatsNum = zx.getInt("TOTAL_SEATS_NUM");
+            String departureAirPort = zx.getString("DEPARTURE_AIRPORT");
+            String destinationAirPort = zx.getString("DESTINATION_AIRPORT");
+            String departureTimes = zx.getString("DEPARTURE_TIME");
+            flight = new Flight(flightId, planeType, currentSeatsNum,
+                    departureAirPort, destinationAirPort, departureTimes);
+        }
+        return flight;
     }
 
     @Override

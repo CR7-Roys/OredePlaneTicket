@@ -8,9 +8,9 @@ import java.util.Set;
 public interface IFlightDao {
     void inserFlight(Flight flight) throws SQLException;
     Set<Flight> getAllFligths() throws SQLException;
-    Flight getFlightDepartureAirPort(String departureAirPort);
+    Flight getFlightDepartureAirPort(String departureAirPort) throws SQLException;
     Flight getFlightDestinationAirPort(String destinationAirPort);
-    Flight getFlightDepartureTime(String departureTime);
+    Flight getFlightDepartureTime(String departureTime) throws SQLException;
     void updateFlight(Flight flight);
 
 }

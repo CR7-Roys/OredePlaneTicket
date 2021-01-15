@@ -1,8 +1,5 @@
 package cn.edu.hcnu.bean;
 
-import cn.edu.hcnu.bll.impl.FlightServiceImpl;
-import cn.edu.hcnu.dao.impl.FlightDaoIml;
-
 public class Flight {
     private String id;
     private String flightId;
@@ -14,6 +11,15 @@ public class Flight {
 
     public Flight(String id, String flightId, String planeType, int currentSeatsNum, String departureAirPort, String destinationAirPort, String departureTime) {
         this.id = id;
+        this.flightId = flightId;
+        this.planeType = planeType;
+        this.currentSeatsNum = currentSeatsNum;
+        this.departureAirPort = departureAirPort;
+        this.destinationAirPort = destinationAirPort;
+        this.departureTime = departureTime;
+    }
+//方法体
+    public Flight(String flightId, String planeType, int currentSeatsNum, String departureAirPort, String destinationAirPort, String departureTime) {
         this.flightId = flightId;
         this.planeType = planeType;
         this.currentSeatsNum = currentSeatsNum;
